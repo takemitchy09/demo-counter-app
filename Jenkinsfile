@@ -87,9 +87,7 @@ pipeline {
 
                 script{
 
-                    sh 'docker image build -t $JOB_NAME.V1.$BUILD_ID'
-                    sh 'docker image tag $JOB_NAME.V1.$BUILD_ID Obito/$JOB_NAME:V1.$BUILD_ID'
-                    sh 'docker image tag $JOB_NAME.V1.$BUILD_ID Obito/$JOB_NAME:latest'
+                    sh 'docker image build -t $JOB_NAME:V1.$BUILD_ID'
                 }
             }
         }            
