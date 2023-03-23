@@ -54,5 +54,26 @@ pipeline {
                 }
             }
         }
+
+        stage('Quality Gate Status'){
+
+            steps{
+
+                script{
+
+                    nexusArtifactUploader artifacts: [[artifactId: 'springboot', 
+                    classifier: '', 
+                    file: 'target/Uber.jar', 
+                    type: 'jar']], 
+                    credentialsId: 'Nexus', 
+                    groupId: 'com.example', 
+                    nexusUrl: '13.232.123.194:8081', 
+                    nexusVersion: 'nexus3', 
+                    protocol: 'http', 
+                    repository: 'demo-app-release', 
+                    version: '1.0.0'
+                }
+            }
+        }        
     }
 }
