@@ -55,7 +55,7 @@ pipeline {
             }
         }
 
-        stage('Quality Gate Status'){
+        stage('Nexus Repo-Release'){
 
             steps{
 
