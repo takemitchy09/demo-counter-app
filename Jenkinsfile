@@ -23,5 +23,14 @@ pipeline{
 
         }
 
+        stage('Maven Integration Test'){
+
+          steps{
+
+            sh 'mvn verify -DskipUnitTests'
+
+          }
+
+        }
       } 
 }
