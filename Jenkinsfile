@@ -73,7 +73,9 @@ pipeline{
         stage('Nexus Release'){
 
           steps{
-            nexusArtifactUploader artifacts: [[artifactId: 'springboot', 
+            nexusArtifactUploader 
+            def readPomVersion = readMavenPom file : 'pom.xml'
+            artifacts: [[artifactId: 'springboot', 
             classifier: '', 
             file: 'target/Uber.jar', 
             type: 'jar']], 
@@ -83,7 +85,7 @@ pipeline{
             nexusVersion: 'nexus3', 
             protocol: 'http', 
             repository: 'demo-app-release', 
-            version: '1.0.1'
+            version: "${readPomVersion.version}"
             }
 
         }        
