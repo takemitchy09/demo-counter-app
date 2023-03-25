@@ -101,7 +101,7 @@ pipeline{
         stage('Docker'){
 
           steps{
-                sh 'docker image build - < Dockerfile'
+                sh 'sudo docker image build -t $JOB_NAME:v1.$BUILD_ID .'
             }
 
         }     
