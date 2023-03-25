@@ -76,6 +76,7 @@ pipeline{
             
             script{
                 def readPomVersion = readMavenPom file : 'pom.xml'
+                def nexusRepo = readPomVersion.version.endsWith ("SNAPSHOT") ? "demo-app-SNAPSHOT" : "demo-app-release"
                 nexusArtifactUploader artifacts: 
                 [
                     [
@@ -90,7 +91,7 @@ pipeline{
                         nexusUrl: '18.140.246.75:8081', 
                         nexusVersion: 'nexus3', 
                         protocol: 'http', 
-                        repository: 'demo-app-release', 
+                        repository: nexusRepo, 
                         version: "${readPomVersion.version}"
             }
           }
