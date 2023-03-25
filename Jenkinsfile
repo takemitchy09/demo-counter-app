@@ -13,5 +13,15 @@ pipeline{
 
         }
 
+        stage('Maven Unit Test'){
+
+          steps{
+
+            sh 'mvn test'
+
+          }
+
+        }
+
       } 
 }
