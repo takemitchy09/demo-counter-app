@@ -73,11 +73,11 @@ pipeline{
         stage('Nexus Release'){
 
           steps{
-            nexusArtifactUploader 
             def readPomVersion = readMavenPom file : 'pom.xml'
-            artifacts: [[artifactId: 'springboot', 
+            nexusArtifactUploader artifacts: [[artifactId: 'springboot', 
             classifier: '', 
-            file: 'target/Uber.jar', type: 'jar']], 
+            file: 'target/Uber.jar', 
+            type: 'jar']], 
             credentialsId: 'nexus-cred', 
             groupId: 'com.example', 
             nexusUrl: '18.140.246.75:8081', 
